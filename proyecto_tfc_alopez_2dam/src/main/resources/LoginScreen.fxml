@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane fx:controller="proyecto.SesionController" xmlns:fx="http://javafx.com/fxml/1"
+          alignment="center" hgap="10" vgap="10" style="-fx-background-color: #f0f0f0;">
+
+    <padding>
+        <Insets top="20" right="25" bottom="10" left="25"/>
+    </padding>
+
+    <Text text="Inicio de Sesión" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2">
+        <font>
+            <Font size="20"/>
+        </font>
+    </Text>
+
+    <Label text="Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="usernameField" promptText="Nombre de usuario" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <PasswordField fx:id="passwordField" promptText="Contraseña" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Button text="Iniciar Sesión" onAction="#onLoginButtonClicked" style="-fx-background-color: darkgreen; -fx-text-fill: white;"
+            GridPane.columnIndex="1" GridPane.rowIndex="3" maxWidth="Infinity">
+        <GridPane.margin>
+            <Insets top="20"/>
+        </GridPane.margin>
+    </Button>
+</GridPane>
