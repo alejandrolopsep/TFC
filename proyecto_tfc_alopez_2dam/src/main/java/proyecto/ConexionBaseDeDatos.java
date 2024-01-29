@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionBaseDeDatos {
-    private static final String URL = "jdbc:mysql://localhost:3306/tfc";
+    private static final String URL = "jdbc:mysql://localhost:3306/TFC";
     private static final String USUARIO = "root";
     private static final String CONTRASENA = "";
 
