@@ -1,9 +1,14 @@
-package proyecto;
+package controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +17,7 @@ import java.sql.SQLException;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginController {
-
+/*
     @FXML
     private TextField campoUsuario;
 
@@ -24,14 +29,26 @@ public class LoginController {
         String usuario = campoUsuario.getText();
         String contrasena = campoContrasena.getText();
 
-        if (validarCredenciales(usuario, contrasena)) {
+        if (UsuarioServicio.validarUsuario(usuario, contrasena)) {
             System.out.println("Inicio de sesión exitoso");
-            // Aquí puedes cambiar a la vista principal de tu aplicación
+            
+            // Cambiamos la ruta a la correcta según la jerarquía del proyecto
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/Inicio.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) campoUsuario.getScene().getWindow(); // Obtiene el stage actual
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("No se pudo cargar la vista de inicio.");
+            }
         } else {
             System.out.println("Credenciales incorrectas");
             // Aquí puedes mostrar un mensaje de error
         }
     }
+
 
     private boolean validarCredenciales(String usuario, String contrasenaPlana) {
         Connection conexion = null;
@@ -65,5 +82,5 @@ public class LoginController {
                 e.printStackTrace();
             }
         }
-    }
+    } */
 }

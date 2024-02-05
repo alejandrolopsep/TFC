@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosController" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+    <Button fx:id="btnAñadirProducto" text="Añadir Producto" onAction="#mostrarFormularioAñadir"/>
+    <VBox fx:id="formularioProducto" visible="false" spacing="10">
+        <TextField fx:id="txtNombre" promptText="Nombre del producto"/>
+        <TextField fx:id="txtPrecio" promptText="Precio"/>
+        <TextField fx:id="txtPeso" promptText="Peso"/>
+        <TextField fx:id="txtCategoria" promptText="Categoría"/>
+        <Button text="Añadir" onAction="#handleAñadir"/>
+        <Button text="Cancelar" onAction="#handleCancelar"/>
+    </VBox>
+    <VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosController" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+    <Button fx:id="btnMostrarProductos" text="Mostrar Productos" onAction="#mostrarProductos"/>
+    <ListView fx:id="listaProductos" />
+    <Button fx:id="btnEliminarProducto" text="Eliminar Producto Seleccionado" onAction="#eliminarProductoSeleccionado"/>
+    <Button fx:id="btnRegresar" text="Regresar" onAction="#onRegresarClicked"/>
+</VBox>
+
