@@ -13,10 +13,10 @@
         <Button text="Añadir" onAction="#handleAñadir"/>
         <Button text="Cancelar" onAction="#handleCancelar"/>
     </VBox>
-    <VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosController" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
     <Button fx:id="btnMostrarProductos" text="Mostrar Productos" onAction="#mostrarProductos"/>
     <ListView fx:id="listaProductos" />
     <Button fx:id="btnEliminarProducto" text="Eliminar Producto Seleccionado" onAction="#eliminarProductoSeleccionado"/>
     <Button fx:id="btnRegresar" text="Regresar" onAction="#onRegresarClicked"/>
 </VBox>
+
 

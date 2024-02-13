@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoDAO {
-    private String url = "jdbc:mysql://localhost:3306/TFC?useSSL=false&serverTimezone=UTC";
+    private String url = "jdbc:mysql://localhost:33006/TFC?useSSL=false&serverTimezone=UTC";
     private String user = "root";
-    private String password = "";
+    private String password = "1234";
 
     public ProductoDAO() {
         

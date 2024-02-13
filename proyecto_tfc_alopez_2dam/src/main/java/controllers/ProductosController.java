@@ -1,19 +1,16 @@
 package controllers;
 
-
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.CheckBox;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import entidades.Producto;
 import entidades.ProductoDAO;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ProductosController {
 
@@ -33,15 +30,14 @@ public class ProductosController {
     private TextField txtCategoria;
 
     @FXML
-    private VBox areaEliminarProducto;
+    private ListView<Producto> listaProductos;
 
-    private ObservableList<Producto> productos = FXCollections.observableArrayList();
     private ProductoDAO productoDAO = new ProductoDAO();
 
     @FXML
     private void initialize() {
         
-        cargarProductos();
+        // mostrarProductos();
     }
 
     @FXML
@@ -63,11 +59,13 @@ public class ProductosController {
             double peso = Double.parseDouble(txtPeso.getText());
             String categoria = txtCategoria.getText();
 
-            productoDAO.añadirProducto(new Producto(nombre, precio, peso, categoria));
+            Producto producto = new Producto(nombre, precio, peso, categoria);
+            productoDAO.añadirProducto(producto);
+            
             mostrarAlerta("Éxito", "Producto añadido correctamente.");
             formularioProducto.setVisible(false);
             limpiarFormulario();
-            cargarProductos(); // Recargar la lista de productos después de añadir uno nuevo
+            mostrarProductos(); // Actualiza la lista de productos
         } catch (NumberFormatException e) {
             mostrarAlerta("Error", "Precio y peso deben ser números válidos.");
         } catch (Exception e) {
@@ -82,28 +80,21 @@ public class ProductosController {
     }
 
     @FXML
-    private void mostrarEliminarProducto() {
-        areaEliminarProducto.setVisible(true);
-        actualizarListaEliminarProducto();
+    public void mostrarProductos() {
+        List<Producto> productos = productoDAO.obtenerProductos();
+        listaProductos.getItems().setAll(productos); // Muestra los productos en el ListView
     }
 
     @FXML
-    private void handleEliminarSeleccionados() {
-        List<Producto> seleccionados = productos.stream().filter(Producto::isSelected).collect(Collectors.toList());
-        seleccionados.forEach(producto -> productoDAO.eliminarProducto(producto.getId()));
-        productos.removeAll(seleccionados);
-        mostrarAlerta("Éxito", "Productos eliminados correctamente.");
-        areaEliminarProducto.setVisible(false);
-        cargarProductos(); // Recargar la lista de productos después de eliminar
-    }
-
-    private void actualizarListaEliminarProducto() {
-        areaEliminarProducto.getChildren().clear();
-        productos.forEach(producto -> {
-            CheckBox cb = new CheckBox(producto.toString());
-            cb.selectedProperty().addListener((obs, wasSelected, isNowSelected) -> producto.setSelected(isNowSelected));
-            areaEliminarProducto.getChildren().add(cb);
-        });
+    public void eliminarProductoSeleccionado() {
+        Producto productoSeleccionado = listaProductos.getSelectionModel().getSelectedItem();
+        if (productoSeleccionado != null) {
+            productoDAO.eliminarProducto(productoSeleccionado.getId());
+            mostrarProductos(); // Actualiza la lista después de eliminar
+            mostrarAlerta("Éxito", "Producto eliminado correctamente.");
+        } else {
+            mostrarAlerta("Selección requerida", "Por favor, selecciona un producto para eliminar.");
+        }
     }
 
     private void limpiarFormulario() {
@@ -119,11 +110,6 @@ public class ProductosController {
         alert.setHeaderText(null);
         alert.setContentText(contenido);
         alert.showAndWait();
-    }
-
-    private void cargarProductos() {
-        productos.clear();
-        productos.addAll(productoDAO.obtenerProductos());
     }
 }
 
