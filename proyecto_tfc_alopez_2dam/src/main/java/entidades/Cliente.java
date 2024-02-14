@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class Cliente {
@@ -13,21 +14,24 @@ public class Cliente {
     private long id;
     private String nombre;
     private String apellidos;
+    private LocalDate fechaNacimiento; // Fecha de nacimiento
     private String telefono;
     private String email;
 
-    public Cliente() {
-        // Constructor por defecto
-    }
-
-    public Cliente(String nombre, String apellidos, String telefono, String email) {
+    // Constructor incluyendo fecha de nacimiento
+    public Cliente(String nombre, String apellidos, LocalDate fechaNacimiento, String telefono, String email) {
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.email = email;
     }
 
-    // Getters y setters
+    // Constructor por defecto
+    public Cliente() {
+    }
+
+    // Getters y setters para todos los campos, incluyendo fechaNacimiento
 
     public long getId() {
         return id;
@@ -53,6 +57,14 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
     public String getTelefono() {
         return telefono;
     }
@@ -67,5 +79,18 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    // Método toString actualizado para incluir fecha de nacimiento
+    @Override
+    public String toString() {
+        return "Cliente{" +
+               "id=" + id +
+               ", nombre='" + nombre + '\'' +
+               ", apellidos='" + apellidos + '\'' +
+               ", fechaNacimiento=" + fechaNacimiento +
+               ", telefono='" + telefono + '\'' +
+               ", email='" + email + '\'' +
+               '}';
     }
 }

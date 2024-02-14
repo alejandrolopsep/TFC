@@ -23,7 +23,13 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    // Getters y setters
+    public Producto() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
+	// Getters y setters
     public long getId() {
         return id;
     }
