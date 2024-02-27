@@ -36,9 +36,9 @@ public class CajaController {
 	private ProductoDAO productoDAO = new ProductoDAO();
 
 	public void initialize() {
-		columnaNombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
-		columnaCantidad.setCellValueFactory(cellData -> cellData.getValue().cantidadProperty().asObject());
-		columnaPrecio.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
+		//columnaNombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+		//columnaCantidad.setCellValueFactory(cellData -> cellData.getValue().cantidadProperty().asObject());
+		//columnaPrecio.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
 
 		cargarCategorias();
 		listaCategorias.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
