@@ -1,128 +1,107 @@
 package controllers;
 
-
-
 import javafx.fxml.FXML;
-import entidades.Cliente;
-import entidades.ClienteDAO;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Labeled;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import entidades.Cliente;
+import entidades.ClienteDAO;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
 public class ClienteController {
 
     @FXML
-    private VBox formularioCliente;
+    private TextField txtNombre, txtApellidos, txtDNICIF, txtTelefono, txtEmail, txtDireccion;
+    @FXML
+    private TextField txtDescuento, txtRecomendadoPor, txtAtendidoPor;
+    @FXML
+    private DatePicker dpCumpleanos, dpFechaAlta, dpUltimaVisita;
+    @FXML
+    private ComboBox<String> cbSexo;
+    @FXML
+    private CheckBox chkEnviarEmail, chkEnviarWhatsapp, chkEnviarSMS;
+    @FXML
+    private TextArea txtObservaciones;
+    @FXML
+    private Button btnGuardar, btnCancelar;
 
     @FXML
-    private TextField txtNombre, txtApellidos, txtTelefono, txtEmail;
-
+    private TableView<Cliente> tablaClientes;
     @FXML
-    private DatePicker datePickerFechaNacimiento;
+    private TableColumn<Cliente, Integer> columnCodigo;
+    @FXML
+    
+    private TableColumn<Cliente, String> columnNombreApellidos;
 
+    private ObservableList<Cliente> clientesOL;
+    private ClienteDAO clienteDAO = new ClienteDAO();
+    @FXML
+    private TableColumn<Cliente, String> columnNombre;
+    @FXML
+    private TableColumn<Cliente, String> columnApellidos;
+   
+
+
+    public ClienteController() {
+        clienteDAO = new ClienteDAO();
+    }
     
     
-    @FXML
-    private TextField txtFechaNacimiento;
-    @FXML
-    private ListView<Cliente> listaClientes;
-
-    @FXML
-    private Button btnRegresar, btnAñadirCliente, btnEliminarCliente, btnMostrarClientes;
-
-    private final ClienteDAO clienteDAO = new ClienteDAO();
-
     @FXML
     private void initialize() {
-        // Initialize client list when the controller is loaded
-        actualizarListaClientes();
-    }
-
-    @FXML
-    private void mostrarFormularioAñadir() {
-        formularioCliente.setVisible(true);
-    }
-
-    @FXML
-    private void handleAñadirCliente() {
-        // Obtén los valores del formulario
-        String nombre = txtNombre.getText();
-        String apellidos = txtApellidos.getText();
-        LocalDate fechaNacimiento = datePickerFechaNacimiento.getValue();
-        String telefono = txtTelefono.getText();
-        String email = txtEmail.getText();
+        configurarTabla();
+        cargarClientes();
         
-     
+        cbSexo.setItems(FXCollections.observableArrayList("Hombre", "Mujer"));
+    }
 
-        // Crea y añade el cliente (ajusta según tu implementación)
-        Cliente nuevoCliente = new Cliente(nombre, apellidos, fechaNacimiento, telefono, email);
-        clienteDAO.añadirCliente(nuevoCliente);
-
-        // Actualiza la lista y limpia el formulario
-        actualizarListaClientes();
-        limpiarFormulario();
+    private void configurarTabla() {
+    	
+        columnCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnApellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
+        
     }
 
 
-    @FXML
-    private void handleCancelar() {
-        formularioCliente.setVisible(false);
-        limpiarFormulario();
-    }
-
-    @FXML
-    private void handleMostrarClientes() {
-        actualizarListaClientes();
-    }
-
-    @FXML
-    private void handleEliminarClienteSeleccionado() {
-        Cliente seleccionado = listaClientes.getSelectionModel().getSelectedItem();
-        if (seleccionado != null) {
-            clienteDAO.eliminarCliente(seleccionado.getId());
-            mostrarAlerta("Éxito", "Cliente eliminado correctamente.");
-            actualizarListaClientes();
-        } else {
-            mostrarAlerta("Error", "Por favor, seleccione un cliente para eliminar.");
-        }
-    }
-
-    private void actualizarListaClientes() {
+    private void cargarClientes() {
         List<Cliente> clientes = clienteDAO.obtenerClientes();
-        ObservableList<Cliente> lista = FXCollections.observableArrayList(clientes);
-        listaClientes.setItems(lista);
+        clientesOL = FXCollections.observableArrayList(clientes);
+        tablaClientes.setItems(clientesOL);
     }
 
-    private void limpiarFormulario() {
-        txtNombre.clear();
-        txtApellidos.clear();
-        txtTelefono.clear();
-        txtEmail.clear();
+    private void rellenarFormularioConDatosCliente(Cliente cliente) {
+        txtNombre.setText(cliente.getNombre());
+        txtApellidos.setText(cliente.getApellidos());
+        txtDNICIF.setText(cliente.getDniCif());
+        txtTelefono.setText(cliente.getTelefono());
+        txtEmail.setText(cliente.getEmail());
+        txtDireccion.setText(cliente.getDireccion());
+        txtDescuento.setText(String.valueOf(cliente.getDescuento()));
+        txtRecomendadoPor.setText(cliente.getRecomendadoPor());
+        txtAtendidoPor.setText(cliente.getAtendidoPor());
+        dpCumpleanos.setValue(cliente.getCumpleanos());
+        dpFechaAlta.setValue(cliente.getFechaAlta());
+        dpUltimaVisita.setValue(cliente.getUltimaVisita());
+        cbSexo.setValue(cliente.getSexo());
+        chkEnviarEmail.setSelected(cliente.isEnviarEmail());
+        chkEnviarWhatsapp.setSelected(cliente.isEnviarWhatsapp());
+        chkEnviarSMS.setSelected(cliente.isEnviarSms());
+        txtObservaciones.setText(cliente.getObservaciones());
     }
 
-    private void mostrarAlerta(String titulo, String contenido) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(contenido);
-        alert.showAndWait();
-    }
-    
     @FXML
-    private void onRegresarClicked() {
-        // Obtiene el Stage actual y lo cierra
-        Stage stage = (Stage) btnRegresar.getScene().getWindow();
-        stage.close();
+    private void guardarCliente() {
+        // Implementación de guardarCliente
+    }
+
+    @FXML
+    private void cancelarOperacion() {
+        // Implementación de cancelarOperacion
     }
 }
+

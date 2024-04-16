@@ -33,11 +33,12 @@ public class SesionController {
         if (UsuarioServicio.validarUsuario(username, password)) {
             System.out.println("Inicio de sesión exitoso");
             
-            // Cambiamos la ruta a la correcta según la jerarquía del proyecto
+           
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/Inicio.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) usernameField.getScene().getWindow(); // Obtiene el stage actual
+                stage.setMaximized(true); // Establece la ventana al máximo
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {
@@ -46,7 +47,7 @@ public class SesionController {
             }
         } else {
             System.out.println("Credenciales incorrectas");
-            // Aquí puedes mostrar un mensaje de error
+            
         }
     }
 }

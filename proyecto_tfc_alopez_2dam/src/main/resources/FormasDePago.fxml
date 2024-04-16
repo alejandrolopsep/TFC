@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FormasDePagoController" spacing="10" alignment="TOP_CENTER">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Text text="Agregar Forma de Pago" style="-fx-font-size: 20px;"/>
+    
+    <GridPane vgap="10" hgap="15" alignment="CENTER">
+        <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        
+        <Label text="Color:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <ColorPicker fx:id="colorPicker" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        
+        <HBox spacing="10" GridPane.rowIndex="2" GridPane.columnIndex="1" alignment="CENTER_RIGHT">
+            <Button text="Guardar" fx:id="btnGuardar" onAction="#guardarFormaDePago"/>
+            <Button text="Cancelar" fx:id="btnCancelar" onAction="#cancelarFormaDePago"/>
+        </HBox>
+    </GridPane>
+
+    <TableView fx:id="tableFormasDePago">
+        <columns>
+            <TableColumn fx:id="columnCodigo" text="Código" prefWidth="100.0"/>
+            <TableColumn fx:id="columnNombre" text="Nombre" prefWidth="200.0"/>
+            <TableColumn fx:id="columnColor" text="Color" prefWidth="200.0"/>
+        </columns>
+    </TableView>
+</VBox>

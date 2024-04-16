@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ControlHorarioController" spacing="10" style="-fx-padding: 10;">
+    <Label text="Control de Horario" style="-fx-font-size: 20px;"/>
+    
+    <!-- Message Label -->
+    <Label fx:id="lblMensaje" text="Bienvenido" style="-fx-text-fill: red;"/>
+    <Label fx:id="labelFechaHora" text="Texto inicial" layoutX="10" layoutY="10" />
+    <!-- Form Inputs in an HBox -->
+    <HBox spacing="15">
+        <Label text="Estado:"/>
+        <ComboBox fx:id="cbEstado" prefWidth="150">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Entrada"/>
+                    <String fx:value="Salida"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label text="Observaciones:"/>
+        <TextArea fx:id="taObservaciones" prefWidth="200" prefHeight="100"/>
+        <VBox spacing="5">
+    <Label text="Contraseña:"/>
+    <TextField fx:id="tfContrasena" prefWidth="200"/>
+</VBox>
+
+    </HBox>
+    
+    <Button text="Fichar" onAction="#registrarEntradaSalida"/>
+    
+   <!-- Table for displaying entries -->
+    <TableView fx:id="tableViewHorarios" prefHeight="200">
+        <columns>
+            <TableColumn fx:id="columnFecha" text="Fecha" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="fecha"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="columnHoraEntrada" text="Hora de entrada" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="horaEntrada"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="columnHoraSalida" text="Hora de salida" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="horaSalida"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="columnObservaciones" text="Observaciones" prefWidth="250">
+                <cellValueFactory><PropertyValueFactory property="observaciones"/></cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>

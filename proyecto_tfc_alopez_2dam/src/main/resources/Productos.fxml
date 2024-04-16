@@ -1,22 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosController" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
-    <Button fx:id="btnAñadirProducto" text="Añadir Producto" onAction="#mostrarFormularioAñadir"/>
-    <VBox fx:id="formularioProducto" visible="false" spacing="10">
-        <TextField fx:id="txtNombre" promptText="Nombre del producto"/>
-        <TextField fx:id="txtPrecio" promptText="Precio"/>
-        <TextField fx:id="txtPeso" promptText="Peso"/>
-        <TextField fx:id="txtCategoria" promptText="Categoría"/>
-        <Button text="Añadir" onAction="#handleAñadir"/>
-        <Button text="Cancelar" onAction="#handleCancelar"/>
+<HBox spacing="20" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.ProductoController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Parte Izquierda: Campos de Entrada -->
+    <VBox spacing="10" alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+        <Text text="Datos del Producto" style="-fx-font-size: 20px;"/>
+        <GridPane vgap="10" hgap="15">
+            <Label text="Código de Barras:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtCodigoBarras" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            
+            <Label text="Nombre:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtNombre" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            
+            <Label text="Sección:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cbSecciones" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            
+            <Label text="Proveedor:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cbProveedores" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            
+            <Label text="Precio:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtPrecio" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            
+            <Label text="Impuesto (%):" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <Spinner fx:id="spnImpuesto" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            
+            <Label text="Coste:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtCoste" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            
+            <Label text="Margen Comercial:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <TextField fx:id="lblMargenComercial" GridPane.rowIndex="7" GridPane.columnIndex="1" editable="false"/>
+            
+            <Label text="Stock Mínimo:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtStockMinimo" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+            
+            <Label text="Stock:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtStock" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+            
+            <Label text="Mostrar en Caja:" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+            <CheckBox fx:id="chkMostrarEnCaja" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+            
+            <Label text="Color:" GridPane.rowIndex="11" GridPane.columnIndex="0"/>
+            <ColorPicker fx:id="colorPicker" GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+            
+            <Label text="Este producto se vende por:" GridPane.rowIndex="12" GridPane.columnIndex="0"/>
+            <HBox GridPane.rowIndex="12" GridPane.columnIndex="1">
+                <RadioButton fx:id="rbUnidades" text="Unidades" toggleGroup="$ventaGrupo"/>
+                <RadioButton fx:id="rbPeso" text="Peso" toggleGroup="$ventaGrupo"/>
+            </HBox>
+            
+            <Label text="Posición en Pantalla:" GridPane.rowIndex="13" GridPane.columnIndex="0"/>
+            <Spinner fx:id="spnPosicionPantalla" GridPane.rowIndex="13" GridPane.columnIndex="1"/>
+            
+            <HBox spacing="10" GridPane.rowIndex="14" GridPane.columnIndex="1" alignment="CENTER_RIGHT">
+                <Button text="Guardar" fx:id="btnGuardar" onAction="#guardarProducto"/>
+                <Button text="Cancelar" fx:id="btnCancelar" onAction="#cancelarProducto"/>
+            </HBox>
+        </GridPane>
     </VBox>
-    <Button fx:id="btnMostrarProductos" text="Mostrar Productos" onAction="#mostrarProductos"/>
-    <ListView fx:id="listaProductos" />
-    <Button fx:id="btnEliminarProducto" text="Eliminar Producto Seleccionado" onAction="#eliminarProductoSeleccionado"/>
-    <Button fx:id="btnRegresar" text="Regresar" onAction="#onRegresarClicked"/>
-</VBox>
 
-
+    <!-- Parte Derecha: Filtros y Tabla de Productos -->
+    <VBox spacing="10" alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+        <Text text="Filtros" style="-fx-font-size: 20px;"/>
+        <HBox spacing="10" alignment="CENTER">
+            <ComboBox fx:id="cbFiltroSeccion" prefWidth="150" />
+            <ComboBox fx:id="cbFiltroProveedor" prefWidth="150" />
+            <Button text="Filtrar" onAction="#filtrarProductos"/>
+        </HBox>
+        
+        <Text text="Lista de Productos" style="-fx-font-size: 20px;"/>
+        <TableView fx:id="tablaProductos" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colCodigo" text="Código" prefWidth="100"/>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="200"/>
+                <TableColumn fx:id="colPrecio" text="Precio" prefWidth="100"/>
+                <TableColumn fx:id="colStock" text="Stock" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </VBox>
+</HBox>

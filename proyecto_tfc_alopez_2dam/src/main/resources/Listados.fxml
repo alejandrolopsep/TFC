@@ -7,5 +7,5 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListadosController" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
     <Text text="Sección de Listados" />
     <Button fx:id="btnRegresar" text="Regresar" onAction="#onRegresarClicked"/>
-    <!-- Aquí puedes añadir más controles específicos de la sección de Caja -->
+    
 </VBox>

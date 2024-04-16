@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmpleadoController" spacing="10" alignment="TOP_CENTER">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Información del Empleado" style="-fx-font-size: 24px;"/>
+    <GridPane vgap="10" hgap="15">
+        <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Apellidos:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtApellidos" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Dirección:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtDireccion" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Fecha de Nacimiento:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="dpFechaNacimiento" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Fecha de Alta:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="dpFechaAlta" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <Label text="CIF/NIF:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtCifNif" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+        <Label text="Teléfono:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtTelefono" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+        <Label text="Nº S.S:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtNumeroSS" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+        <Label text="Categoría:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtCategoria" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+        <Label text="Sexo:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="cbSexo" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+
+        <Label text="Aparece en agenda:" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+        <CheckBox fx:id="chkApareceEnAgenda" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
+        <Label text="Aparece en caja:" GridPane.rowIndex="11" GridPane.columnIndex="0"/>
+        <CheckBox fx:id="chkApareceEnCaja" GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+
+        <Label text="Color:" GridPane.rowIndex="12" GridPane.columnIndex="0"/>
+        <ColorPicker fx:id="colorPicker" GridPane.rowIndex="12" GridPane.columnIndex="1"/>
+
+        <Label text="Observaciones:" GridPane.rowIndex="13" GridPane.columnIndex="0"/>
+        <TextArea fx:id="txtObservaciones" GridPane.rowIndex="13" GridPane.columnIndex="1" prefHeight="100"/>
+
+        <!-- Añade aquí el nuevo campo para contraseña -->
+        <Label text="Contraseña:" GridPane.rowIndex="14" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="txtContrasena" GridPane.rowIndex="14" GridPane.columnIndex="1"/>
+        
+        <HBox spacing="10" GridPane.rowIndex="15" GridPane.columnIndex="1" alignment="CENTER_RIGHT">
+            <Button text="Guardar" fx:id="btnGuardar"/>
+            <Button text="Cancelar" fx:id="btnCancelar"/>
+        </HBox>
+    </GridPane>
+    
+    <TableView fx:id="tablaEmpleados" prefHeight="200" prefWidth="300" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="columnCodigo" text="Código" prefWidth="75"/>
+            <TableColumn fx:id="columnNombre" text="Nombre" prefWidth="125"/>
+            <TableColumn fx:id="columnApellidos" text="Apellidos" prefWidth="200"/>
+        </columns>
+    </TableView>
+</VBox>

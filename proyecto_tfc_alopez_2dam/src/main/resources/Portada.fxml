@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" spacing="20">
+    <!-- Logo de TPV ALS -->
+    <ImageView>
+        <image>
+            
+            <Image url="/logo.png"/>
+        </image>
+    </ImageView>
+    
+    <!-- Texto 'Desarrollado por Alejandro López Sepúlveda' -->
+    <Label text="Desarrollado por Alejandro López Sepúlveda" style="-fx-font-size: 24px;">
+        <font>
+            <!-- Ajusta la fuente según necesites -->
+            <Font name="Arial" size="24"/>
+        </font>
+    </Label>
+</VBox>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:controller="controllers.MantenimientoController" xmlns:fx="http://javafx.com/fxml/1" spacing="10" alignment="CENTER">
+    <Button text="Secciones" onAction="#gestionarSecciones"/>
+    <Button fx:id="btnProveedores" text="Proveedores" onAction="#onProveedoresClicked" />
+   	<Button text="Productos" onAction="#onProductosClicked"/>
+   	<Button text="Empleados" onAction="#onEmpleadosClicked"/>
+   	<Button text="Clientes" onAction="#onClientesClicked"/>
+   	<Button fx:id="btnFormasDePago" text="Formas de Pago" onAction="#mostrarFormasDePago"/>
+    <Button text="Reparar Base de Datos" onAction="#repararBaseDeDatos"/>
+    <Button text="Limpiar Caché" onAction="#limpiarCache"/>
+    <Button text="Actualizar Sistema" onAction="#actualizarSistema"/>
+</VBox>
+

@@ -7,18 +7,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class InicioController {
 
 	@FXML
 	private AnchorPane contentArea;
 
-	// Botones
+	
 	@FXML
 	private Button btnCaja;
 	@FXML
@@ -36,20 +38,40 @@ public class InicioController {
 	@FXML
 	private Button btnConfiguracion;
 
-	// Métodos para manejar eventos de clic de botones
+	
 
 	private void abrirNuevaVentana(String fxml, String titulo) throws IOException {
-
-		Parent root = FXMLLoader.load(getClass().getResource("/" + fxml));
-		Stage stage = new Stage();
-		stage.setTitle(titulo);
-		stage.setScene(new Scene(root));
-		stage.show();
+	    Parent root = FXMLLoader.load(getClass().getResource("/" + fxml));
+	    Scene scene = new Scene(root);
+	    
+	    Stage stage = new Stage();
+	    stage.setTitle(titulo);
+	    stage.setScene(scene);
+	    stage.setMaximized(true); 
+	    stage.show();
 	}
 
+
+
+	
+	@FXML
+    private void onMantenimientoClicked() {
+		try {
+			abrirNuevaVentana("Mantenimiento.fxml", "Mantenimiento");
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+    }
+	
 	@FXML
 	private void onCajaClicked() throws IOException {
-		abrirNuevaVentana("Caja.fxml", "Caja");
+		abrirNuevaVentana("SeleccionEmpleados.fxml", "SeleccionEmpleados");
+		
+	}
+	@FXML
+	private void onControlHorarioClicked() throws IOException {
+		abrirNuevaVentana("SeleccionEmpleadosHorario.fxml", "Seleccione Empleado");
 	}
 
 	@FXML
@@ -88,6 +110,10 @@ public class InicioController {
 	private void onConfiguracionClicked() throws IOException {
 		abrirNuevaVentana("Configuracion.fxml", "Configuracion");
 	}
+	
+	
+	
+	
 
 	// Método auxiliar para cargar las vistas en el contentArea
 	private void cargarVista(String fxml) {
@@ -113,9 +139,9 @@ public class InicioController {
 		alert.showAndWait();
 	}
 
-	// Método para inicialización si es necesario
+	
 	@FXML
 	public void initialize() {
-		// Cualquier inicialización que necesites al cargar la pantalla
+		
 	}
 }

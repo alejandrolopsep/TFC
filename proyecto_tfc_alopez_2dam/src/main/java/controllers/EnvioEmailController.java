@@ -44,8 +44,8 @@ public class EnvioEmailController {
         String destinatarios = String.join(",", listaClientesEmails.getItems());
 
         // Configura los detalles del remitente y servidor SMTP aquí
-        String remitente = "tu-email@gmail.com";
-        String clave = "tu-clave-de-aplicación";
+        String remitente = "x";
+        String clave = "x";
 
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");

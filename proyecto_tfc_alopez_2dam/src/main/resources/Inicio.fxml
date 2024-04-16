@@ -5,19 +5,22 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
+
 <BorderPane fx:id="mainContainer" prefHeight="412.0" prefWidth="528.0" stylesheets="@inicio.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InicioController">
     <left>
         <VBox fx:id="sideBar" spacing="10" styleClass="side-bar">
+            <Button fx:id="btnMantenimiento" onAction="#onMantenimientoClicked" text="Mantenimiento" />
             <Button fx:id="btnCaja" onAction="#onCajaClicked" text="Caja" />
-            <Button fx:id="btnListados" onAction="#onListadosClicked" text="Listados" />
+           	<Button fx:id="btnControlHorario" onAction="#onControlHorarioClicked" text="ControlHorario" />
+           	
             <Button fx:id="btnStock" onAction="#onStockClicked" text="Stock" />
             <Button fx:id="btnPromociones" onAction="#onPromocionesClicked" text="Promociones" />
-            <!-- Espacio para más botones en el futuro -->
+            
         </VBox>
     </left>
     <center>
         <AnchorPane fx:id="contentArea" styleClass="content-area">
-            <!-- Contenido principal se cambiará dinámicamente dependiendo del botón seleccionado -->
+            
         </AnchorPane>
     </center>
     <right>
@@ -25,6 +28,7 @@
             <Button fx:id="btnClientes" onAction="#onClientesClicked" text="Clientes" />
             <Button fx:id="btnProductos" onAction="#onProductosClicked" text="Productos" />
             <Button fx:id="btnEmail" onAction="#onEmailClicked" text="Envio Email" />
+            <Button fx:id="btnListados" onAction="#onListadosClicked" text="Listados" />
             <Button fx:id="btnConfiguracion" onAction="#onConfiguracionClicked" text="Configuración" />
         </VBox>
     </right>

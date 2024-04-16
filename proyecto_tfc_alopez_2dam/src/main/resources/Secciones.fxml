@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://www.w3.org/1999/xhtml" xmlns:fx="http://javafx.com/fxml/1" 
+    fx:controller="controllers.SeccionesController" 
+    stylesheets="@default_stylesheet.css">
+    <left>
+        <ListView fx:id="listViewSecciones" minWidth="200" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+        </ListView>
+    </left>
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="10" fx:id="vBoxSecciones">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <TextField fx:id="textFieldNombre" promptText="Nombre"/>
+            <ColorPicker fx:id="colorPickerColor"/>
+            <TextField fx:id="textFieldPosicion" promptText="Posición"/>
+            <HBox spacing="10">
+                <Button text="Agregar" fx:id="btnAgregar" onAction="#handleAgregarAction"/>
+                <Button text="Eliminar" fx:id="btnEliminar" onAction="#handleEliminarAction"/>
+                <Button text="Actualizar" fx:id="btnActualizar" onAction="#handleActualizarAction"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
+
+

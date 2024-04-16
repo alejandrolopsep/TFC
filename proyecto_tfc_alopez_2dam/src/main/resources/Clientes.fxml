@@ -1,32 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClienteController" spacing="10" alignment="TOP_CENTER">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <Label text="Información del Cliente" style="-fx-font-size: 20px;"/>
+    <ScrollPane prefHeight="600" prefWidth="800">
+        <VBox spacing="10">
+            <GridPane vgap="10" hgap="15">
+                <Label text="Código:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtCodigo" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Nombre:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtNombre" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Apellidos:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtApellidos" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="DNI/CIF:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtDNICIF" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="Teléfono:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtTelefono" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                <Label text="Email:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtEmail" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                <Label text="Dirección:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtDireccion" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+                <Label text="Descuento (%):" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtDescuento" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+                <Label text="Recomendado por:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtRecomendadoPor" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+                <Label text="Atendido por:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtAtendidoPor" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+
+                <Label text="Cumpleaños:" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dpCumpleanos" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
+                <Label text="Fecha Alta:" GridPane.rowIndex="11" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dpFechaAlta" GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+
+                <Label text="Última Visita:" GridPane.rowIndex="12" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dpUltimaVisita" GridPane.rowIndex="12" GridPane.columnIndex="1"/>
+
+                <Label text="Sexo:" GridPane.rowIndex="13" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="cbSexo" GridPane.rowIndex="13" GridPane.columnIndex="1"/>
+                    
+
+                <Label text="Enviar Email:" GridPane.rowIndex="14" GridPane.columnIndex="0"/>
+                <CheckBox fx:id="chkEnviarEmail" GridPane.rowIndex="14" GridPane.columnIndex="1"/>
+
+                <Label text="Enviar Whatsapp:" GridPane.rowIndex="15" GridPane.columnIndex="0"/>
+                <CheckBox fx:id="chkEnviarWhatsapp" GridPane.rowIndex="15" GridPane.columnIndex="1"/>
+
+                <Label text="Enviar SMS:" GridPane.rowIndex="16" GridPane.columnIndex="0"/>
+				<CheckBox fx:id="chkEnviarSMS" GridPane.rowIndex="16" GridPane.columnIndex="1"/>
+				<Label text="Observaciones:" GridPane.rowIndex="17" GridPane.columnIndex="0"/>
+				<TextArea fx:id="txtObservaciones" GridPane.rowIndex="17" GridPane.columnIndex="1" prefHeight="100"/>
+				</GridPane>
+				<HBox spacing="10" GridPane.rowIndex="18" GridPane.columnIndex="1" alignment="CENTER_RIGHT">
+				<Button text="Guardar" fx:id="btnGuardar"/>
+				<Button text="Cancelar" fx:id="btnCancelar"/>
+				</HBox>
+				</VBox>
+				</ScrollPane>
+				<Label text="Lista de Clientes" style="-fx-font-size: 20px;" VBox.vgrow="NEVER"/>
+				<TableView fx:id="tablaClientes" VBox.vgrow="ALWAYS">
+				    <columns>
+				        <TableColumn fx:id="columnCodigo" text="Código" prefWidth="75"/>
+				        <TableColumn fx:id="columnNombre" text="Nombre" prefWidth="125"/>
+				        <TableColumn fx:id="columnApellidos" text="Apellidos" prefWidth="150"/>
+				    </columns>
+				</TableView>
 
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClienteController" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
-    <Label text="Gestión de Clientes" style="-fx-font-size: 24;"/>
-    <GridPane hgap="10" vgap="10" alignment="CENTER">
-        <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-        
-        <Label text="Apellidos:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        <TextField fx:id="txtApellidos" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-        
-        <Label text="Fecha de Nacimiento:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <DatePicker fx:id="datePickerFechaNacimiento" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-        
-        <Label text="Teléfono:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-        <TextField fx:id="txtTelefono" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-        
-        <Label text="Email:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-        <TextField fx:id="txtEmail" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
-    </GridPane>
-    <HBox spacing="10" alignment="CENTER">
-        <Button text="Añadir Cliente" onAction="#handleAñadirCliente"/>
-        <Button text="Mostrar Clientes" onAction="#handleMostrarClientes"/>
-    </HBox>
-    <ListView fx:id="listaClientes" prefHeight="200.0"/>
-    <Button text="Eliminar Cliente Seleccionado" onAction="#handleEliminarClienteSeleccionado"/>
-    <Button text="Regresar" onAction="#onRegresarClicked"/>
-</VBox>
+				</VBox>
+				
+								

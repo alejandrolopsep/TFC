@@ -1,11 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PromocionesController" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
-    <Text text="Sección de Promociones" />
-    <Button fx:id="btnRegresar" text="Regresar" onAction="#onRegresarClicked"/>
-    <!-- Aquí puedes añadir más controles específicos de la sección de Caja -->
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PromocionesController" spacing="10" style="-fx-padding: 20;">
+    <Label text="Gestión de Promociones" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <VBox spacing="10" style="-fx-padding: 10;">
+        <Label text="Productos con descuento:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <HBox spacing="10">
+            <Button text="Ver promociones existentes y eliminacion" onAction="#verEliminarDescuento" prefWidth="200" prefHeight="40"/>
+            <Button text="Nueva promocion y modificacion" onAction="#crearModificarDescuento" prefWidth="200" prefHeight="40"/>
+        </HBox>
+
+        <Label text="Productos más regalo:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <HBox spacing="10">
+            <Button text="Ver promociones existentes y eliminacion" onAction="#verEliminarRegalo" prefWidth="200" prefHeight="40"/>
+            <Button text="Crear o modificar" onAction="#crearModificarRegalo" prefWidth="200" prefHeight="40"/>
+        </HBox>
+
+        <Label text="Vales descuento:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <HBox spacing="10">
+            <Button text="Ver y eliminar" onAction="#verEliminarVales" prefWidth="200" prefHeight="40"/>
+            <Button text="Crear o modificar" onAction="#crearModificarVales" prefWidth="200" prefHeight="40"/>
+        </HBox>
+
+        <Label text="Gestión de tarifas (varios precios):" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <Button text="Configurar precios" onAction="#configurarPrecios" prefWidth="300" prefHeight="40"/>
+
+        <Label text="Promociones 2x1:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <HBox spacing="10">
+            <Button text="Ver y eliminar" onAction="#verEliminar2x1" prefWidth="200" prefHeight="40"/>
+            <Button text="Crear o modificar" onAction="#crearModificar2x1" prefWidth="200" prefHeight="40"/>
+        </HBox>
+
+        <Label text="Promoción 3x2:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <HBox spacing="10">
+            <Button text="Ver y eliminar" onAction="#verEliminar3x2" prefWidth="200" prefHeight="40"/>
+            <Button text="Crear o modificar" onAction="#crearModificar3x2" prefWidth="200" prefHeight="40"/>
+        </HBox>
+    </VBox>
+
+    <Button text="Salir" onAction="#salir" style="-fx-font-size: 16px; -fx-background-color: red; -fx-text-fill: white;" prefWidth="100" prefHeight="40"/>
 </VBox>
+
+
+

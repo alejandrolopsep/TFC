@@ -1,0 +1,103 @@
+:root {
+    -color-principal: #FF69B4; /* Hot Pink como color principal */
+    -color-secundario: #FFB6C1; /* Light Pink como color secundario */
+    -color-terciario: #FFC0CB; /* Pink como color terciario */
+    -color-cuarto: #DB7093; /* Pale Violet Red como cuarto color */
+    -color-texto: #FFFFFF; /* Blanco para texto */
+    -fondo-general: #2E3436; /* Un gris oscuro para fondos */
+}
+
+.button {
+    -fx-background-color:
+        linear-gradient(to bottom, derive(var(-color-principal), 20%), derive(var(-color-principal), -20%)),
+        linear-gradient(to top, derive(var(-color-principal), 40%), var(-color-principal));
+    -fx-text-fill: var(-color-texto);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 2);
+    -fx-padding: 8 15 8 15;
+    -fx-font-weight: bold;
+}
+
+.label {
+    -fx-text-fill: derive(var(-color-principal), -30%);
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-control-inner-background: var(-color-secundario);
+    -fx-text-fill: var(-fondo-general);
+    -fx-font-weight: bold;
+}
+
+.table-view {
+    -fx-base: var(-color-cuarto);
+    -fx-control-inner-background: derive(var(-color-secundario), -10%);
+}
+
+.table-column {
+    -fx-background-color: linear-gradient(var(-color-secundario), var(-color-terciario));
+    -fx-border-color: var(-color-principal);
+    -fx-text-fill: var(-color-texto);
+}
+
+.scroll-pane {
+    -fx-background-color: derive(var(-color-secundario), 20%);
+}
+
+.list-view {
+    -fx-background-color: var(-color-secundario);
+}
+
+.menu-bar {
+    -fx-background-color: var(-color-terciario);
+}
+
+.tooltip {
+    -fx-font-size: 12px;
+    -fx-background-color: derive(var(-color-cuarto), 30%);
+    -fx-text-fill: var(-color-texto);
+}
+
+.progress-bar {
+    -fx-accent: var(-color-terciario);
+}
+
+.slider {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-control-inner-background: var(-color-cuarto);
+}
+
+.tab-pane {
+    -fx-background-color: var(-color-principal);
+}
+
+.check-box {
+    -fx-box-border: var(-color-cuarto);
+    -fx-mark-highlight-color: var(-color-principal);
+}
+
+.radio-button {
+    -fx-dot-color: var(-color-terciario);
+    -fx-unselected-background-color: var(-color-secundario);
+}
+
+.combo-box {
+    -fx-background-color: var(-color-principal);
+}
+
+.combo-box-base {
+    -fx-padding: 4 5 4 5;
+}
+
+/* Personalización adicional para barras de desplazamiento */
+.scroll-bar {
+    -fx-background-color: derive(var(-color-secundario), 30%);
+    -fx-background-radius: 10;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: var(-color-principal);
+    -fx-background-insets: 2;
+    -fx-background-radius: 8;
+}

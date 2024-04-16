@@ -21,7 +21,7 @@ public class ListadosController {
 
     @FXML
     private void onRegresarClicked() {
-        // Obtiene el Stage actual y lo cierra
+       
         Stage stage = (Stage) btnRegresar.getScene().getWindow();
         stage.close();
     }
